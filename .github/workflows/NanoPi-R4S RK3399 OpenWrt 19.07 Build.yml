@@ -142,7 +142,7 @@ jobs:
           wget -O friendlywrt/feeds/packages/libs/libxml2/Makefile https://raw.githubusercontent.com/coolsnowwolf/packages/master/libs/libxml2/Makefile
 
           sed -i "/redirect_https/d" friendlywrt/package/network/services/uhttpd/files/uhttpd.config
-          sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:YouTube%></td><td><%=WikiHackers%></td></tr>' friendlywrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
+          #sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:YouTube%></td><td><%=WikiHackers%></td></tr>' friendlywrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
           # sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:CPU Temperature%></td><td><%=luci.sys.exec("cut -c1-2 /sys/class/thermal/thermal_zone0/temp")%><span>&#8451;</span></td></tr>' friendlywrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
           # sed -i 's/pcdata(boardinfo.system or "?")/"ARMv8"/' friendlywrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
           sed -i 's/services/vpn/g' friendlywrt/package/feeds/luci/luci-app-openvpn/luasrc/controller/openvpn.lua
@@ -150,7 +150,12 @@ jobs:
           
           sed -i '/done/imkfs.ext4 \/dev\/mmcblk0p2 && mkdir \/mnt\/mmcblk0p2 && mount \/dev\/mmcblk0p2 \/mnt\/mmcblk0p2 && mount \/dev\/mmcblk0p2 \/opt\n' ./friendlywrt/package/base-files/files/root/setup.sh
           # sed -i 's/\/root/\/mnt\/mmcblk0p2/g' ./friendlywrt/package/luci-app-r2sflasher/root/usr/bin/rom_flash
-
+      - name: MOD index file
+        run: |
+          cd code/friendlywrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status
+          sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Telegram%></td><td><a href="https://t.me/wikimao"><%:WikiHackers%></a></td></tr>' index.htm
+          sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:CPU Temperature%></td><td><%=luci.sys.exec("cut -c1-2 /sys/class/thermal/thermal_zone0/temp")%><span>&#8451;</span></td></tr>' index.htm
+          
       - name: Patch Kernel
         run: |
           cd code/kernel/
@@ -207,7 +212,7 @@ jobs:
         with:
           name: FriendlyWrt_NanoPi-R4S RK3399 v19.07
           allowUpdates: true
-          tag: 20210221
+          tag: 20210223
           commit: main
           replacesArtifacts: true
           token: ${{ secrets.GITHUB_TOKEN }}
