@@ -212,7 +212,9 @@ jobs:
         with:
           name: FriendlyWrt_NanoPi-R4S RK3399 v19.07
           allowUpdates: true
-          tag: [YYYY-mm-dd]
+          tag: ${{ env.NOW }}
+        env:
+          NOW: $(date +'%Y-%m-%dT%H:%M:%S')
           commit: main
           replacesArtifacts: true
           token: ${{ secrets.GITHUB_TOKEN }}
