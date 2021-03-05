@@ -170,7 +170,7 @@ jobs:
       - name: Custom Configure Files
         run: |
           rm -f code/friendlywrt/.config*
-          cp r4s-rk3399-config code/configs/config_rk3399
+          cp config/r4s-rk3399-config code/configs/config_rk3399
 
       - name: Set Default Values
         run: |
