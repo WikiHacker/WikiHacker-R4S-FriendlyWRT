@@ -217,7 +217,7 @@ jobs:
         with:
           name: FriendlyWrt_NanoPi-R4S RK3399 v19.07
           allowUpdates: true
-          tag: R4S20210308
+          tag: R4S20210316
           commit: main
           replacesArtifacts: true
           token: ${{ secrets.GITHUB_TOKEN }}
