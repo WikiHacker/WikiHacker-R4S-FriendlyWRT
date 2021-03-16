@@ -12,7 +12,7 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
 
     steps:
 
@@ -102,7 +102,7 @@ jobs:
           cd code/friendlywrt/package/base-files/files
           mkdir -p etc/openclash/core
           # for updates, go to: https://github.com/Dreamacro/clash/releases
-          wget -qO- https://github.com/Dreamacro/clash/releases/download/v1.4.1/clash-linux-armv8-v1.4.2.gz | gunzip -c > etc/openclash/core/clash
+          wget -qO- https://github.com/Dreamacro/clash/releases/download/v1.4.2/clash-linux-armv8-v1.4.2.gz | gunzip -c > etc/openclash/core/clash
           # for updates, go to: https://github.com/vernesong/OpenClash/releases/tag/TUN-Premium
           wget -qO- https://github.com/vernesong/OpenClash/releases/download/TUN-Premium/clash-linux-armv8-2021.03.10.gz | gunzip -c > etc/openclash/core/clash_tun
           # for updates, go to: https://github.com/vernesong/OpenClash/releases/tag/TUN
