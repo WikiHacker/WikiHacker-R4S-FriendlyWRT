@@ -31,9 +31,7 @@ jobs:
           sudo apt-get -y install unzip subversion
           sudo apt-get -y purge dotnet* ghc* google* llvm* mysql* php* zulu* firefox hhvm
           sudo apt-get -y autoremove --purge          
-          # wget -O - https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh | sed 's/python-/python3-/g' | /bin/bash
           wget -O - https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh | bash
-
       #- name: Setup Debug Session
       #  uses: P3TERX/debugger-action@master
   
@@ -170,7 +168,7 @@ jobs:
       - name: Custom Configure Files
         run: |
           rm -f code/friendlywrt/.config*
-          cp config/r4s-rk3399-config code/configs/config_rk3399
+          cp r4s-rk3399-config code/configs/config_rk3399
 
       - name: Set Default Values
         run: |
@@ -215,9 +213,9 @@ jobs:
         id: create_release
         uses: ncipollo/release-action@v1.7.3
         with:
-          name: FriendlyWrt_NanoPi-R2S RK3399 v19.07
+          name: FriendlyWrt_NanoPi-R4S RK3399 v19.07
           allowUpdates: true
-          tag: R2S20210317
+          tag: R4S20210322
           commit: main
           replacesArtifacts: true
           token: ${{ secrets.GITHUB_TOKEN }}
