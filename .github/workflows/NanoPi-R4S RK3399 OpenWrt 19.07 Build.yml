@@ -134,6 +134,12 @@ jobs:
           
           rm -rf friendlywrt/feeds/packages/lang/luasec
           svn co https://github.com/coolsnowwolf/packages/trunk/lang/luasec friendlywrt/feeds/packages/lang/luasec
+          # fix docker build with golang
+          rm -rf friendlywrt/feeds/packages/utils/containerd && svn export https://github.com/biliwala/packages/branches/docker-ce/utils/containerd feeds/packages/utils/containerd
+          rm -rf friendlywrt/feeds/packages/utils/docker-ce && svn export https://github.com/biliwala/packages/branches/docker-ce/utils/docker-ce feeds/packages/utils/docker-ce
+          rm -rf friendlywrt/feeds/packages/utils/docker-compose && svn export https://github.com/biliwala/packages/branches/docker-ce/utils/docker-compose feeds/packages/utils/docker-compose
+          rm -rf friendlywrt/feeds/packages/utils/libnetwork && svn export https://github.com/biliwala/packages/branches/docker-ce/utils/libnetwork feeds/packages/utils/libnetwork
+          rm -rf friendlywrt/feeds/packages/utils/runc && svn export https://github.com/biliwala/packages/branches/docker-ce/utils/runc feeds/packages/utils/runc
 
           sed -i '/STAMP_BUILT/d' friendlywrt/feeds/packages/utils/runc/Makefile
           sed -i '/STAMP_BUILT/d' friendlywrt/feeds/packages/utils/containerd/Makefile
@@ -155,6 +161,7 @@ jobs:
 
          # sed -i '/done/imkfs.ext4 \/dev\/mmcblk0p2 && mkdir \/mnt\/mmcblk0p2 && mount \/dev\/mmcblk0p2 \/mnt\/mmcblk0p2 && mount \/dev\/mmcblk0p2 \/opt\n' ./friendlywrt/package/base-files/files/root/setup.sh
          # sed -i 's/\/root/\/mnt\/mmcblk0p2/g' ./friendlywrt/package/luci-app-r2sflasher/root/usr/bin/rom_flash
+         # fix docker build with golang
       - name: MOD index file
         run: |
           cd code/friendlywrt/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status
