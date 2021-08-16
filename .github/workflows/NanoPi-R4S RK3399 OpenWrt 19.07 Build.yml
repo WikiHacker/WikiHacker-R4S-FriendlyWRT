@@ -123,7 +123,8 @@ jobs:
           cd code
 
           rm -rf friendlywrt/feeds/packages/libs/libcap
-          svn co https://github.com/openwrt/packages/trunk/libs/libcap friendlywrt/feeds/packages/libs/libcap
+          #svn co https://github.com/openwrt/packages/trunk/libs/libcap friendlywrt/feeds/packages/libs/libcap
+          svn co https://github.com/coolsnowwolf/lede/trunk/package/libs/libcap friendlywrt/feeds/packages/libs/libcap
           
           rm -rf friendlywrt/package/feeds/packages/netdata
           svn co https://github.com/openwrt/packages/trunk/admin/netdata friendlywrt/package/feeds/packages/netdata
